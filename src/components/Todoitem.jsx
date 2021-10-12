@@ -1,7 +1,7 @@
 import React from "react";
 
 function TodoItem(props) {
-    const {todo} = props;
+    const { todo } = props;
     return <div>{todo}</div>;
 }
 
