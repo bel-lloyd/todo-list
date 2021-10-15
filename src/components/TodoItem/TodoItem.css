@@ -1,4 +1,13 @@
 .todo {
-    background: white;
+    background: #ffffff;
     padding: 10px;
+    font-size: 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.complete {
+    text-decoration: line-through;
 }

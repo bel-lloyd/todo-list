@@ -1,18 +1,42 @@
 import React, {useState} from "react";
-import TodoForm from "./components/TodoForm";
-import TodoItem from "./components/Todoitem";
+import TodoItem from "./components/TodoItem/Todoitem";
+import TodoForm from "./components/TodoForm/TodoForm";
 import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([
-    "Learn about React",
-    "Meet friend for lunch",
-    "Build really cool todo app",
-    "Be awesome",
+    {
+      text: "Learn about React",
+      isCompleted: false,
+    },
+    {
+      text: "Meet friend for lunch",
+      isCompleted: false,
+    },
+    {
+      text: "Build really cool todo app",
+      isCompleted: false,
+    },
+    {
+      text: "Be awesome",
+      isCompleted: false,
+    }
   ]);
 
   const addTodo = (text) => {
-    const newTodos = [...todos, text];
+    const newTodos = [...todos, {text}];
+    setTodos(newTodos);
+  };
+
+  const completeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
@@ -21,7 +45,10 @@ function App() {
   <div className="todo-list">
   <h1>My todo list</h1>
   {todos.map((todo, index) => (
-    <TodoItem todo={todo} key={index} />
+    <TodoItem todo={todo} key={index} index={index} 
+    completeTodo={completeTodo} 
+    removeTodo={removeTodo}
+    />
   ))}
   <TodoForm addTodo={addTodo} />
   </div>
